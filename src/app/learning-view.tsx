@@ -1,15 +1,14 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { VideoCard } from "./cards/video-card"
 import { TextCard } from "./cards/text-card"
 import { PollCard } from "./cards/poll-card"
-import { ChevronUp } from "lucide-react"
+import { ChevronUp } from 'lucide-react'
+import { Lesson } from "./types/lessons"
 
-const lessons = [
+const lessons: Lesson[] = [
   {
     type: "video",
     title: "Introduction to React",
@@ -19,8 +18,7 @@ const lessons = [
   {
     type: "text",
     title: "Components and Props",
-    content:
-      "Components are the building blocks of React applications. They accept inputs called props and return React elements that describe what should appear on the screen.",
+    content: "Components are the building blocks of React applications. They accept inputs called props and return React elements that describe what should appear on the screen.",
   },
   {
     type: "poll",
@@ -62,20 +60,41 @@ export function LearningView() {
     setIsDragging(false)
   }
 
-  const renderCard = (lesson: any, index: number) => {
-    const props = {
-      ...lesson,
-      key: index,
+  const renderCard = (lesson: Lesson, index: number) => {
+    const commonProps = {
       isActive: index === currentIndex,
     }
 
     switch (lesson.type) {
       case "video":
-        return <VideoCard {...props} />
+        return (
+          <VideoCard
+            key={index}
+            title={lesson.title}
+            videoUrl={lesson.videoUrl}
+            description={lesson.description}
+            {...commonProps}
+          />
+        )
       case "text":
-        return <TextCard {...props} />
+        return (
+          <TextCard
+            key={index}
+            title={lesson.title}
+            content={lesson.content}
+            {...commonProps}
+          />
+        )
       case "poll":
-        return <PollCard {...props} />
+        return (
+          <PollCard
+            key={index}
+            question={lesson.question}
+            options={lesson.options}
+            correctAnswer={lesson.correctAnswer}
+            {...commonProps}
+          />
+        )
       default:
         return null
     }
@@ -109,4 +128,3 @@ export function LearningView() {
     </div>
   )
 }
-
