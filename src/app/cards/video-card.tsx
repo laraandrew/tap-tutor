@@ -15,7 +15,7 @@ export function VideoCard({
       <div className="relative aspect-video rounded-lg overflow-hidden bg-muted">
         <video className="w-full h-full object-cover" src={videoUrl} controls autoPlay={isActive} playsInline />
       </div>
-      <p className="text-muted-foreground">{description}</p>
+      <p className="text-muted-foreground text-blue-600">{description}</p>
     </div>
   )
 }

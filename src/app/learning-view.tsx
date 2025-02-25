@@ -12,8 +12,8 @@ const lessons: Lesson[] = [
   {
     type: "video",
     title: "Introduction to React",
-    videoUrl: "https://example.com/video.mp4",
-    description: "Learn the basics of React and component-based architecture",
+    videoUrl: "https://www.youtube.com/watch?v=v4H2fTgHGuc&ab_channel=Fireship",
+    description: "This is an example of how to modify the input to the component itself.",
   },
   {
     type: "text",
